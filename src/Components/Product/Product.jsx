@@ -1,14 +1,14 @@
 import { ProductCard, ProductImg, ProductName, ProductCategory, ProductPrice, ProductButton } from "./style";
 
 
-export default function FoodsProduct ({product}) {
+export default function Product ({product}) {
     return (
         <ProductCard key={product.id}>
-            <ProductImg src={product.img}/>
+            <ProductImg image={product.img}/>
             <ProductName>{product.name}</ProductName>
             <ProductCategory>{product.category}</ProductCategory>
-            <ProductPrice>{product.price}</ProductPrice>
-            <ProductButton/>
+            <ProductPrice>R$ {product.price.toFixed(2).toString().replace(".",",")}</ProductPrice>
+            <ProductButton>Adicionar</ProductButton>
         </ProductCard>
     )
 }

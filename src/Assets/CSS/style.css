@@ -2,6 +2,7 @@
 
 .body {
     width: 100vw;
+    font-family: Inter;
 }
 
 #root {
@@ -13,7 +14,13 @@
     box-sizing: content-box;
 }
 
-.ai {
+.sectionProductsIcon {
   position: absolute;
   width: 15px;
+  margin-top: 1vw;
+  margin-left: 1vw;
+}
+
+details[open] summary {
+  font-size: 4vw;
 }

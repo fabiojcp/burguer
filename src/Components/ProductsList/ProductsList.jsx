@@ -1,33 +1,38 @@
-import { ProductsListMain } from "./style.jsx";
-import FoodsProduct from "../FoodsProduct/FoodProduct.jsx";
-import DrinkProduct from "../DrinkProduct/DrinkProduct.jsx";
-import { useState, useEffect } from "react";
+import {
+  ProductsListMain,
+  ProductsProductBox,
+  ProductsDetails,
+  ProductsSummary,
+} from "./style.jsx";
+import Product from "../Product/Product.jsx";
 import BurguerIcon from "../../Assets/Images/hamburger.png";
-import DrinkIcon from "../../Assets/Images/bebidas.png"
+import DrinkIcon from "../../Assets/Images/bebidas.png";
 
 export default function ProductsList({ Food, Drink }) {
   return (
     <ProductsListMain>
       {Food().length > 0 && (
-        <div>
-        <img src={BurguerIcon} className="ai" />
-        <details>
-          {Food().map((product) => {
-            return <FoodsProduct product={product} />;
-          })}
-        </details>
-        </div>
+        <ProductsProductBox>
+          <img src={BurguerIcon} alt="Comidas" className="sectionProductsIcon" />
+          <ProductsDetails>
+            <ProductsSummary>Lanches</ProductsSummary>
+            {Food().map((product) => {
+              return <Product product={product} />;
+            })}
+          </ProductsDetails>
+        </ProductsProductBox>
       )}
       {Drink().length > 0 && (
-        <div>
-        <img src={DrinkIcon} className="ai" />
-        <details>
-          {Drink().length > 0 &&
-            Drink().map((product) => {
-              return <FoodsProduct product={product} />;
-            })}
-        </details>
-        </div>
+        <ProductsProductBox>
+          <img src={DrinkIcon} alt="Bebida" className="sectionProductsIcon" />
+          <ProductsDetails>
+            <ProductsSummary>Bebidas</ProductsSummary>
+            {Drink().length > 0 &&
+              Drink().map((product) => {
+                return <Product product={product} />;
+              })}
+          </ProductsDetails>
+        </ProductsProductBox>
       )}
     </ProductsListMain>
   );

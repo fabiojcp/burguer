@@ -126,7 +126,7 @@ export const HeaderButton = styled.button`
     color: white;
     font-family: Inter;
     font-size: 4vw;
-    margin-left: 58%;
+    margin-left: 58vw;
     margin-top: 2.8vw;
   }
   &:active {
