@@ -12,3 +12,8 @@
     width: 100%;
     box-sizing: content-box;
 }
+
+.ai {
+  position: absolute;
+  width: 15px;
+}

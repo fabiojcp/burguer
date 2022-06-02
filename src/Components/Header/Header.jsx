@@ -7,7 +7,7 @@ import {
 } from "./style.jsx";
 import Logo from "../../Assets/Images/Logo.png";
 
-export default function Header({InputValue, setInputValue, filter}) {
+export default function Header({ InputValue, setInputValue, filtered }) {
   return (
     <HeaderMain>
       <HeaderLogo src={Logo} alt="Logo BurguerKenzie" />
@@ -17,7 +17,7 @@ export default function Header({InputValue, setInputValue, filter}) {
           onChange={(event) => setInputValue(event.target.value)}
           placeholder="Pesquisar produto"
         />
-        <HeaderButton type="button" onClick={() => filter(InputValue)}>
+        <HeaderButton type="button" onClick={() => filtered(InputValue)}>
           Pesquisar
         </HeaderButton>
       </HeaderForm>

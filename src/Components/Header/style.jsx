@@ -45,7 +45,7 @@ export const HeaderLogo = styled.img`
 export const HeaderForm = styled.form`
   @media ${devices.mobileSS} {
     display: flex;
-    width: 100%;
+    width: 95%;
     margin-left: 5%;
   }
 `;
@@ -126,7 +126,7 @@ export const HeaderButton = styled.button`
     color: white;
     font-family: Inter;
     font-size: 4vw;
-    margin-left: 62%;
+    margin-left: 58%;
     margin-top: 2.8vw;
   }
   &:active {

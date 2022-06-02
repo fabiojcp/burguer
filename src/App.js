@@ -10,17 +10,24 @@ export default function App() {
   const BASE = "https://hamburgueria-kenzie-json-serve.herokuapp.com/products";
   const [Products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [FoodProducts, setFoodProducts] = useState([]);
+  const [DrinkProduct, setDrinkProduct] = useState([]);
   const [InputValue, setInputValue] = useState("");
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
-  function filter () {
-    return InputValue.split('').length < 1
+  function filtered() {
+    setFoodProducts(filteredProducts.filter((product) => product.category === "Sanduíches"))
+    return InputValue.split("").length < 1
       ? setFilteredProducts(Products)
-      : setFilteredProducts(Products.filter((product) =>
-          product.name.toLowerCase().includes(InputValue.toLowerCase())
-        ));
+      : setFilteredProducts(
+          Products.filter((product) =>
+            product.name.toLowerCase().includes(InputValue.toLowerCase())
+          )
+        );
   }
+  const Food = () => filteredProducts.filter((product) => product.category === "Sanduíches")
+  const Drink = () => filteredProducts.filter((product) => product.category === "Bebidas")
 
   useEffect(() => {
     axios.get(BASE).then((response) => setFilteredProducts(response.data));
@@ -29,8 +36,15 @@ export default function App() {
 
   return (
     <div className="boxMain">
-      <Header InputValue={InputValue} setInputValue={setInputValue} filter={filter}/>
-      <ProductsList Products={Products} filteredProducts={filteredProducts} />
+      <Header
+        InputValue={InputValue}
+        setInputValue={setInputValue}
+        filtered={filtered}
+      />
+      <ProductsList
+        Food={Food}
+        Drink={Drink}
+      />
       <Cart />
     </div>
   );

@@ -1,7 +1,7 @@
 import { ProductCard, ProductImg, ProductName, ProductCategory, ProductPrice, ProductButton } from "./style";
-import Cart from "../Cart/Cart";
 
-export default function Product ({product}) {
+
+export default function FoodsProduct ({product}) {
     return (
         <ProductCard key={product.id}>
             <ProductImg src={product.img}/>
