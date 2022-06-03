@@ -24,3 +24,11 @@
 details[open] summary {
   font-size: 4vw;
 }
+
+#flex {
+  display: flex;
+}
+
+#none {
+  display: none;
+}

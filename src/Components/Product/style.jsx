@@ -17,7 +17,7 @@ export const ProductImg = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: 60%;
-    background-image: url(${(props) => (props.image)});
+    background-image: url(${({image}) => image});
     width: 100%;
     height: 40%;
 }

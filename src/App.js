@@ -10,14 +10,13 @@ export default function App() {
   const BASE = "https://hamburgueria-kenzie-json-serve.herokuapp.com/products";
   const [Products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [FoodProducts, setFoodProducts] = useState([]);
-  const [DrinkProduct, setDrinkProduct] = useState([]);
   const [InputValue, setInputValue] = useState("");
   const [currentSale, setCurrentSale] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
+  const cartTotal = currentSale.reduce((acumulador, product) => acumulador + product.price, 0)
+  const Food = () => filteredProducts.filter((product) => product.category === "Sanduíches")
+  const Drink = () => filteredProducts.filter((product) => product.category === "Bebidas")
 
   function filtered() {
-    setFoodProducts(filteredProducts.filter((product) => product.category === "Sanduíches"))
     return InputValue.split("").length < 1
       ? setFilteredProducts(Products)
       : setFilteredProducts(
@@ -26,8 +25,13 @@ export default function App() {
           )
         );
   }
-  const Food = () => filteredProducts.filter((product) => product.category === "Sanduíches")
-  const Drink = () => filteredProducts.filter((product) => product.category === "Bebidas")
+  
+  function addCart (product) {
+    currentSale.length === 0 
+    ? setCurrentSale([product])
+    : (!(currentSale.filter((item) => item.id === product.id).length > 0) && (setCurrentSale([...currentSale, product])))
+    console.log(currentSale)
+  }
 
   useEffect(() => {
     axios.get(BASE).then((response) => setFilteredProducts(response.data));
@@ -44,8 +48,9 @@ export default function App() {
       <ProductsList
         Food={Food}
         Drink={Drink}
+        addCart={addCart}
       />
-      <Cart />
+      <Cart currentSale={currentSale} cartTotal={cartTotal}/>
     </div>
   );
 }
