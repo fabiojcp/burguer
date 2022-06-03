@@ -15,6 +15,7 @@ export const CartMain = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1;
 }
 `
 
@@ -31,18 +32,53 @@ export const CartTitle = styled.p`
 
 export const CartProducts = styled.div`
 @media ${devices.mobileSS} {
-    
+    height: 85%;
 }
 `
 
-export const CartTotalSale = styled.div`
+export const CartTotalSale = styled.p`
 @media ${devices.mobileSS} {
     
 }
 `
 
-export const CartRemoveAll = styled.div`
+export const CartRemoveAll = styled.button`
+@media ${devices.mobileSS} {
+    background: #E0E0E0;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 3vw;
+    margin: 4%;
+    width: 92%;
+    font-family: Inter;
+    font-weight: 600;
+}
+&:active {
+    box-shadow: 0 0 20px black;
+}
+`
+
+  export const CartTotalSaleDiv = styled.div`
+@media ${devices.mobileSS} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 4vw;
+    font-family: Inter;
+    font-weight: 600;
+    border-top: 2px solid #E0E0E0;
+    padding: 4vw 0;
+}
+`
+
+export const CartTotalSaleText = styled.p`
 @media ${devices.mobileSS} {
     
+}
+`
+export const CartProductsDiv = styled.div`
+@media ${devices.mobileSS} {
+    height: 72%;
+    overflow-y: scroll;
 }
 `

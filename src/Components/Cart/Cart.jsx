@@ -5,6 +5,9 @@ import {
   CartProducts,
   CartTotalSale,
   CartRemoveAll,
+  CartTotalSaleDiv,
+  CartTotalSaleText,
+  CartProductsDiv,
 } from "./style";
 import { EmptyCart, EmptyCartTitle, EmptyCartSubTitle } from "./styleEmpty";
 import { OpenCart, CloseCart } from "./styleBtn";
@@ -13,32 +16,46 @@ import Close from "../../Assets/Icon/Close.png";
 import { useState } from "react";
 import React from "react";
 
-export default function Cart({ currentSale, cartTotal }) {
+export default function Cart({ currentSale, cartTotal, setCurrentSale, removeCart }) {
   const [CartOpen, setCartOpen] = useState("none");
-  const [Inverted, setInverted] = useState("flex")
-  
+  const [Inverted, setInverted] = useState("flex");
+
   return (
     <>
       <CartMain id={CartOpen}>
+      <CloseCart
+              Close={Close}
+              onClick={() => (setCartOpen("none"), setInverted("flex"))}
+            />
         <CartTitle>Carrinho de compras</CartTitle>
         {currentSale.length === 0 ? (
           <EmptyCart>
-            <CloseCart Close={Close} onClick={() => (setCartOpen("none"), setInverted("flex"))} />
+            
             <EmptyCartTitle>Sua sacola está vazia</EmptyCartTitle>
             <EmptyCartSubTitle>Adicione itens</EmptyCartSubTitle>
           </EmptyCart>
         ) : (
           <CartProducts>
-            <CloseCart Close={Close} onClick={() => (setCartOpen("none"), setInverted("flex"))} />
+            <CartProductsDiv>
             {currentSale.map((product, index) => {
-              return <CartProduct index={index} product={product} />;
+              return <CartProduct key={index} product={product} removeCart={removeCart} />;
             })}
-            <CartTotalSale>R$ {cartTotal.toFixed(2).toString().replace(".",",")}</CartTotalSale>
-            <CartRemoveAll>Remover todos</CartRemoveAll>
+            </CartProductsDiv>
+            <CartTotalSaleDiv>
+              <CartTotalSaleText>Total</CartTotalSaleText>
+              <CartTotalSale>
+                R$ {cartTotal.toFixed(2).toString().replace(".", ",")}
+              </CartTotalSale>
+            </CartTotalSaleDiv>
+            <CartRemoveAll onClick={() => setCurrentSale([])}>Remover todos</CartRemoveAll>
           </CartProducts>
         )}
       </CartMain>
-      <OpenCart CartIco={CartIco} onClick={() => (setCartOpen("flex"), setInverted("none"))} id={Inverted} />
+      <OpenCart
+        CartIco={CartIco}
+        onClick={() => (setCartOpen("flex"), setInverted("none"))}
+        id={Inverted}
+      />
     </>
   );
 }

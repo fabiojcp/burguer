@@ -30,7 +30,10 @@ export default function App() {
     currentSale.length === 0 
     ? setCurrentSale([product])
     : (!(currentSale.filter((item) => item.id === product.id).length > 0) && (setCurrentSale([...currentSale, product])))
-    console.log(currentSale)
+  }
+
+  function removeCart (product) {
+    setCurrentSale(currentSale.filter((item) => item.id !== product.id))
   }
 
   useEffect(() => {
@@ -50,7 +53,7 @@ export default function App() {
         Drink={Drink}
         addCart={addCart}
       />
-      <Cart currentSale={currentSale} cartTotal={cartTotal}/>
+      <Cart currentSale={currentSale} cartTotal={cartTotal} setCurrentSale={setCurrentSale} removeCart={removeCart} />
     </div>
   );
 }
