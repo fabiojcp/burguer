@@ -19,8 +19,8 @@ import React from "react";
 export default function Cart({ currentSale, cartTotal, setCurrentSale, removeCart }) {
   const [CartOpen, setCartOpen] = useState("none");
   const [Inverted, setInverted] = useState("flex");
-
   const [deviceSize, changeDeviceSize] = useState(window.visualViewport.width < window.visualViewport.height);
+
   useEffect(() => {
     const resizeW = () => changeDeviceSize(window.visualViewport.width < window.visualViewport.height);
 

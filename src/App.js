@@ -13,7 +13,7 @@ export default function App() {
   const [InputValue, setInputValue] = useState("");
   const [currentSale, setCurrentSale] = useState([]);
   const cartTotal = currentSale.reduce(
-    (acumulador, product) => acumulador + product.price*product.amount,
+    (acumulador, product) => acumulador + product.price * product.amount,
     0
   );
   const Food = () =>
@@ -24,30 +24,29 @@ export default function App() {
   function filtered() {
     return InputValue.split("").length < 1
       ? setFilteredProducts(Products)
-      : Products.some((product) =>
-      product.name.toLowerCase().includes(InputValue.toLowerCase()) !== false
-    )
-          ? setFilteredProducts(Products.filter((product) =>
+      : Products.some(
+          (product) =>
+            product.name.toLowerCase().includes(InputValue.toLowerCase()) !==
+            false
+        )
+      ? setFilteredProducts(
+          Products.filter((product) =>
             product.name.toLowerCase().includes(InputValue.toLowerCase())
-          ))
-          : setFilteredProducts(Products.filter((product) =>
-          product.category.toLowerCase().includes(InputValue.toLowerCase())
-        ))
+          )
+        )
+      : setFilteredProducts(
+          Products.filter((product) =>
+            product.category.toLowerCase().includes(InputValue.toLowerCase())
+          )
+        );
   }
 
   function addCart(product) {
-    const newProduct = {...product, amount: 1}
-
-    const someProduct = { ...product, amount: product.amount+1,}
-
     currentSale.length === 0
-      ? setCurrentSale([newProduct])
+      ? setCurrentSale([product = { ...product, amount: 1 }])
       : !currentSale.some((item) => item.id === product.id)
-      ? setCurrentSale([...currentSale, newProduct])
-      : setCurrentSale([
-          ...currentSale.filter((item) => item.id !== product.id),
-          someProduct,
-        ]);
+      ? setCurrentSale([...currentSale, product = { ...product, amount: 1 }])
+      : setCurrentSale([...currentSale.map((item) => {if (item.id === product.id) {return { ...item, amount: item.amount + 1}} else {return {...item}}})]) 
   }
 
   function removeCart(product) {

@@ -8,8 +8,6 @@ import {
 } from "./style";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState, useEffect } from "react";
-import { Component } from "react";
 
 export default function Product({
   product,
@@ -17,18 +15,7 @@ export default function Product({
   currentSale,
   filteredProducts,
 }) {
-  const [deviceSize, changeDeviceSize] = useState(
-    window.visualViewport.width < window.visualViewport.height
-  );
 
-  useEffect(() => {
-    const resizeW = () =>
-      changeDeviceSize(
-        window.visualViewport.width < window.visualViewport.height
-      );
-
-    window.addEventListener("resize", resizeW); // Update the width on resize
-  });
   function add () {
     toast.success("Produto adicionado", {
       position: "bottom-right",

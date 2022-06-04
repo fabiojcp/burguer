@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import devices from "../../Devices";
 
+
+
 export const CartMain = styled.div`
   @media ${devices.mobileSS} {
     position: fixed;
