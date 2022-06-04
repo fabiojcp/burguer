@@ -36,22 +36,9 @@ export default function App() {
   }
 
   function addCart(product) {
-    const newProduct = {
-      amount: 1,
-      id: product.id,
-      name: product.name,
-      category: product.category,
-      price: product.price,
-      img: product.img,
-    };
-    const someProduct = {
-      amount: product.amount+1,
-      id: product.id,
-      name: product.name,
-      category: product.category,
-      price: product.price,
-      img: product.img,
-    };
+    const newProduct = {...product, amount: 1}
+
+    const someProduct = { ...product, amount: product.amount+1,}
 
     currentSale.length === 0
       ? setCurrentSale([newProduct])
