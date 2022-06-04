@@ -52,7 +52,7 @@ export default function Product({
   }
   
   return (
-    <ProductCard key={product.id} onClick={(() => console.log(Component.theme))}>
+    <ProductCard key={product.id}>
       <ProductImg image={product.img} />
       <ProductName>{product.name}</ProductName>
       <ProductCategory>{product.category}</ProductCategory>
