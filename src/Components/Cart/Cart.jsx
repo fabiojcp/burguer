@@ -21,7 +21,6 @@ export default function Cart({ currentSale, cartTotal, setCurrentSale, removeCar
   const [Inverted, setInverted] = useState("flex");
 
   const [deviceSize, changeDeviceSize] = useState(window.visualViewport.width < window.visualViewport.height);
-
   useEffect(() => {
     const resizeW = () => changeDeviceSize(window.visualViewport.width < window.visualViewport.height);
 

@@ -1,4 +1,4 @@
-import {CartProductMain, CartProductImage, CartProductTexts, CartProductName, CartProductCategory, CartProductBtnRemove} from "./style.jsx"
+import {CartProductMain, CartProductImage, CartProductTexts, CartProductName, CartProductCategory, CartProductBtnRemove, CartProductAmount} from "./style.jsx"
 
 export default function CartProduct ({product, removeCart}) {
 
@@ -8,8 +8,10 @@ export default function CartProduct ({product, removeCart}) {
             <CartProductTexts>
                 <CartProductName>{product.name}</CartProductName>
                 <CartProductCategory>{product.category}</CartProductCategory>
+                <CartProductAmount>Quantidade: {product.amount}</CartProductAmount>
             </CartProductTexts>
             <CartProductBtnRemove onClick={() => removeCart(product)}>Remover</CartProductBtnRemove>
+            
         </CartProductMain>
     )
 

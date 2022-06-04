@@ -84,11 +84,27 @@ export const CartRemoveAll = styled.button`
     background: #e0e0e0;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    padding: 1vw;
+    padding: 1%;
     margin: 0 5%;
     width: 92%;
     font-family: Inter;
     font-weight: 600;
+    //font-size: 1.2vw;
+    &:hover {
+      background: #828282;
+      cursor: pointer;
+    }
+  }
+  @media ${devices.laptop} {
+    background: #e0e0e0;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1%;
+    margin: 0 5%;
+    width: 92%;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: inherit;
     &:hover {
       background: #828282;
       cursor: pointer;
@@ -117,8 +133,20 @@ export const CartTotalSaleDiv = styled.div`
     margin: 0 5%;
     font-family: Inter;
     font-weight: 600;
+    font-size: 1.2vw;
     border-top: 2px solid #e0e0e0;
     padding: 5% 0;
+  }
+  @media ${devices.laptop} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 5%;
+    font-family: Inter;
+    font-weight: 600;
+    border-top: 2px solid #e0e0e0;
+    padding: 5% 0;
+    font-size: inherit;
   }
 `;
 

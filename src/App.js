@@ -13,7 +13,7 @@ export default function App() {
   const [InputValue, setInputValue] = useState("");
   const [currentSale, setCurrentSale] = useState([]);
   const cartTotal = currentSale.reduce(
-    (acumulador, product) => acumulador + product.price,
+    (acumulador, product) => acumulador + product.price*product.amount,
     0
   );
   const Food = () =>
@@ -32,10 +32,31 @@ export default function App() {
   }
 
   function addCart(product) {
+    const newProduct = {
+      amount: 1,
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      img: product.img,
+    };
+    const someProduct = {
+      amount: product.amount+1,
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      img: product.img,
+    };
+    console.log(product, currentSale, !currentSale.some((item) => item.id === product.id))
     currentSale.length === 0
-      ? setCurrentSale([product])
-      : !(currentSale.filter((item) => item.id === product.id).length > 0) &&
-        setCurrentSale([...currentSale, product]);
+      ? setCurrentSale([newProduct])
+      : !currentSale.some((item) => item.id === product.id)
+      ? setCurrentSale([...currentSale, newProduct])
+      : setCurrentSale([
+          ...currentSale.filter((item) => item.id !== product.id),
+          someProduct,
+        ]);
   }
 
   function removeCart(product) {
@@ -59,6 +80,7 @@ export default function App() {
         Drink={Drink}
         addCart={addCart}
         filteredProducts={filteredProducts}
+        currentSale={currentSale}
       />
       <Cart
         currentSale={currentSale}

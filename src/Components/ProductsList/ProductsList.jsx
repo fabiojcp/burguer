@@ -10,12 +10,22 @@ import DrinkIcon from "../../Assets/Images/bebidas.png";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-export default function ProductsList({ Food, Drink, addCart, filteredProducts }) {
-
-  const [deviceSize, changeDeviceSize] = useState(window.visualViewport.width > window.visualViewport.height);
+export default function ProductsList({
+  Food,
+  Drink,
+  addCart,
+  filteredProducts,
+  currentSale,
+}) {
+  const [deviceSize, changeDeviceSize] = useState(
+    window.visualViewport.width > window.visualViewport.height
+  );
 
   useEffect(() => {
-    const resizeW = () => changeDeviceSize(window.visualViewport.width > window.visualViewport.height);
+    const resizeW = () =>
+      changeDeviceSize(
+        window.visualViewport.width > window.visualViewport.height
+      );
 
     window.addEventListener("resize", resizeW); // Update the width on resize
   });
@@ -27,7 +37,13 @@ export default function ProductsList({ Food, Drink, addCart, filteredProducts })
           <ProductsProductBox>
             {filteredProducts.map((product, index) => {
               return (
-                <Product product={product} key={index} addCart={addCart} />
+                <Product
+                  product={product}
+                  key={index}
+                  addCart={addCart}
+                  currentSale={currentSale}
+                  filteredProducts={filteredProducts}
+                />
               );
             })}
           </ProductsProductBox>
@@ -45,7 +61,13 @@ export default function ProductsList({ Food, Drink, addCart, filteredProducts })
                 <ProductsSummary>Lanches</ProductsSummary>
                 {Food().map((product, index) => {
                   return (
-                    <Product product={product} key={index} addCart={addCart} />
+                    <Product
+                      product={product}
+                      key={index}
+                      addCart={addCart}
+                      currentSale={currentSale}
+                      filteredProducts={filteredProducts}
+                    />
                   );
                 })}
               </ProductsDetails>
@@ -67,6 +89,8 @@ export default function ProductsList({ Food, Drink, addCart, filteredProducts })
                         product={product}
                         key={index}
                         addCart={addCart}
+                        currentSale={currentSale}
+                        filteredProducts={filteredProducts}
                       />
                     );
                   })}

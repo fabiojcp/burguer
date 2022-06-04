@@ -70,7 +70,7 @@ export const CartProductName = styled.p`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin: 0 0 1vw 0;
+    margin: 0 0 0.5vw 0;
     width: 95%;
     &:hover {
       max-width: 100ch;
@@ -88,11 +88,13 @@ export const CartProductCategory = styled.p`
     color: #828282;
     font-weight: 400;
     font-size: 3.8vw;
+    margin: 0 0 1.5vw 0;
   }
   @media ${devices.tablet} {
     color: #828282;
     font-weight: 400;
     font-size: 0.8vw;
+    margin: 0 0 0.5vw 0;
   }
 `;
 
@@ -122,3 +124,16 @@ export const CartProductBtnRemove = styled.button`
     }
   }
 `;
+
+export const CartProductAmount = styled.p`
+  @media ${devices.mobileSS} {
+    color: #828282;
+    font-weight: 400;
+    font-size: 3.8vw;
+  }
+  @media ${devices.tablet} {
+    color: #828282;
+    font-weight: 400;
+    font-size: 0.8vw;
+  }
+`
