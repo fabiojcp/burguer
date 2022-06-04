@@ -8,6 +8,14 @@ export const EmptyCart = styled.div`
     text-align: center;
     font-family: Inter;
 }
+@media ${devices.tablet} {
+    text-align: center;
+    font-family: Inter;
+    background: #F5F5F5;
+    height:10vw;
+    width: 100%;
+    border-radius: 10px ;
+}
 `
 
 export const EmptyCartTitle = styled.p`
@@ -16,6 +24,12 @@ export const EmptyCartTitle = styled.p`
     font-size: 5vw;
     margin-bottom: 4vw;
 }
+@media ${devices.tablet} {
+    font-weight: 700;
+    font-size: 1.1vw;
+    margin-bottom: 2vw;
+    margin-top: 1vw;
+}
 `
 
 export const EmptyCartSubTitle = styled.p`
@@ -23,5 +37,10 @@ export const EmptyCartSubTitle = styled.p`
     font-weight: 400;
     color: #828282;
     font-size: 4vw;
+}
+@media ${devices.tablet} {
+    font-weight: 400;
+    color: #828282;
+    font-size: 0.8vw;
 }
 `

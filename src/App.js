@@ -12,9 +12,14 @@ export default function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [InputValue, setInputValue] = useState("");
   const [currentSale, setCurrentSale] = useState([]);
-  const cartTotal = currentSale.reduce((acumulador, product) => acumulador + product.price, 0)
-  const Food = () => filteredProducts.filter((product) => product.category === "Sanduíches")
-  const Drink = () => filteredProducts.filter((product) => product.category === "Bebidas")
+  const cartTotal = currentSale.reduce(
+    (acumulador, product) => acumulador + product.price,
+    0
+  );
+  const Food = () =>
+    filteredProducts.filter((product) => product.category === "Sanduíches");
+  const Drink = () =>
+    filteredProducts.filter((product) => product.category === "Bebidas");
 
   function filtered() {
     return InputValue.split("").length < 1
@@ -25,15 +30,16 @@ export default function App() {
           )
         );
   }
-  
-  function addCart (product) {
-    currentSale.length === 0 
-    ? setCurrentSale([product])
-    : (!(currentSale.filter((item) => item.id === product.id).length > 0) && (setCurrentSale([...currentSale, product])))
+
+  function addCart(product) {
+    currentSale.length === 0
+      ? setCurrentSale([product])
+      : !(currentSale.filter((item) => item.id === product.id).length > 0) &&
+        setCurrentSale([...currentSale, product]);
   }
 
-  function removeCart (product) {
-    setCurrentSale(currentSale.filter((item) => item.id !== product.id))
+  function removeCart(product) {
+    setCurrentSale(currentSale.filter((item) => item.id !== product.id));
   }
 
   useEffect(() => {
@@ -52,8 +58,14 @@ export default function App() {
         Food={Food}
         Drink={Drink}
         addCart={addCart}
+        filteredProducts={filteredProducts}
       />
-      <Cart currentSale={currentSale} cartTotal={cartTotal} setCurrentSale={setCurrentSale} removeCart={removeCart} />
+      <Cart
+        currentSale={currentSale}
+        cartTotal={cartTotal}
+        setCurrentSale={setCurrentSale}
+        removeCart={removeCart}
+      />
     </div>
   );
 }

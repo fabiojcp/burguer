@@ -16,6 +16,9 @@ export const OpenCart = styled.button`
     border-radius: 100%;
     border: 0 solid transparent;
 }
+@media ${devices.tablet} {
+    display: none;
+}
 `
 export const CloseCart = styled.button`
 @media ${devices.mobileSS} {
@@ -31,5 +34,8 @@ export const CloseCart = styled.button`
     width: 7vw;
     background-color: #27AE60;
     border: 0 solid transparent;
+}
+@media ${devices.tablet} {
+    display: none;
 }
 `
