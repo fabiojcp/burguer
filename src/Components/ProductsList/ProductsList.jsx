@@ -3,6 +3,7 @@ import {
   ProductsProductBox,
   ProductsDetails,
   ProductsSummary,
+  ProductsListError,
 } from "./style.jsx";
 import Product from "../Product/Product.jsx";
 import BurguerIcon from "../../Assets/Images/hamburger.png";
@@ -35,7 +36,8 @@ export default function ProductsList({
       {deviceSize ? (
         <>
           <ProductsProductBox>
-            {filteredProducts.map((product, index) => {
+            {filteredProducts.length > 0 
+            ? filteredProducts.map((product, index) => {
               return (
                 <Product
                   product={product}
@@ -45,60 +47,37 @@ export default function ProductsList({
                   filteredProducts={filteredProducts}
                 />
               );
-            })}
+            })
+          : <ProductsListError>Não achamos produtos com esta busca</ProductsListError>
+          }
           </ProductsProductBox>
         </>
-      ) : (
+      ) : 
         <>
+          {filteredProducts.length > 0 
+          ? <>
           {Food().length > 0 && (
             <ProductsProductBox>
-              <img
-                src={BurguerIcon}
-                alt="Comidas"
-                className="sectionProductsIcon"
-              />
+              <img src={BurguerIcon} alt="Comidas" className="sectionProductsIcon"/>
               <ProductsDetails>
                 <ProductsSummary>Lanches</ProductsSummary>
-                {Food().map((product, index) => {
-                  return (
-                    <Product
-                      product={product}
-                      key={index}
-                      addCart={addCart}
-                      currentSale={currentSale}
-                      filteredProducts={filteredProducts}
-                    />
-                  );
-                })}
+                {Food().map((product, index) => {return ( <Product product={product} key={index} addCart={addCart} currentSale={currentSale} filteredProducts={filteredProducts} />)})}
               </ProductsDetails>
             </ProductsProductBox>
           )}
           {Drink().length > 0 && (
-            <ProductsProductBox>
-              <img
-                src={DrinkIcon}
-                alt="Bebida"
-                className="sectionProductsIcon"
-              />
+            <ProductsProductBox> <img src={DrinkIcon} alt="Bebida" className="sectionProductsIcon" />
               <ProductsDetails>
                 <ProductsSummary>Bebidas</ProductsSummary>
-                {Drink().length > 0 &&
-                  Drink().map((product, index) => {
-                    return (
-                      <Product
-                        product={product}
-                        key={index}
-                        addCart={addCart}
-                        currentSale={currentSale}
-                        filteredProducts={filteredProducts}
-                      />
-                    );
-                  })}
-              </ProductsDetails>
+                {Drink().map((product, index) => {return (<Product product={product} key={index} addCart={addCart} currentSale={currentSale} filteredProducts={filteredProducts}/>)})}
+                  </ProductsDetails>
             </ProductsProductBox>
-          )}
+            )}
+                  </>
+            : <ProductsListError>Não achamos <br/>produtos com esta busca</ProductsListError>
+                }
         </>
-      )}
+      }
     </ProductsListMain>
   );
 }

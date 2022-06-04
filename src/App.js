@@ -24,11 +24,15 @@ export default function App() {
   function filtered() {
     return InputValue.split("").length < 1
       ? setFilteredProducts(Products)
-      : setFilteredProducts(
-          Products.filter((product) =>
+      : Products.some((product) =>
+      product.name.toLowerCase().includes(InputValue.toLowerCase()) !== false
+    )
+          ? setFilteredProducts(Products.filter((product) =>
             product.name.toLowerCase().includes(InputValue.toLowerCase())
-          )
-        );
+          ))
+          : setFilteredProducts(Products.filter((product) =>
+          product.category.toLowerCase().includes(InputValue.toLowerCase())
+        ))
   }
 
   function addCart(product) {
@@ -48,7 +52,7 @@ export default function App() {
       price: product.price,
       img: product.img,
     };
-    console.log(product, currentSale, !currentSale.some((item) => item.id === product.id))
+
     currentSale.length === 0
       ? setCurrentSale([newProduct])
       : !currentSale.some((item) => item.id === product.id)

@@ -11,7 +11,7 @@ export default function Header({ InputValue, setInputValue, filtered }) {
   return (
     <HeaderMain>
       <HeaderLogo src={Logo} alt="Logo BurguerKenzie" />
-      <HeaderForm>
+      <HeaderForm onSubmit={(event) => event.preventDefault()}>
         <HeaderInput
           value={InputValue}
           onChange={(event) => setInputValue(event.target.value)}

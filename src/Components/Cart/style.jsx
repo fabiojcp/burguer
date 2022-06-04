@@ -89,7 +89,7 @@ export const CartRemoveAll = styled.button`
     width: 92%;
     font-family: Inter;
     font-weight: 600;
-    //font-size: 1.2vw;
+    font-size: 1.2vw;
     &:hover {
       background: #828282;
       cursor: pointer;
@@ -104,7 +104,7 @@ export const CartRemoveAll = styled.button`
     width: 92%;
     font-family: Inter;
     font-weight: 600;
-    font-size: inherit;
+    font-size: 1.4vw;
     &:hover {
       background: #828282;
       cursor: pointer;
@@ -146,7 +146,7 @@ export const CartTotalSaleDiv = styled.div`
     font-weight: 600;
     border-top: 2px solid #e0e0e0;
     padding: 5% 0;
-    font-size: inherit;
+    font-size: 1.4vw;
   }
 `;
 

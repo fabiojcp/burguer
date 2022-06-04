@@ -18,9 +18,9 @@ export const ProductsProductBox = styled.div`
   @media ${devices.tablet} {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    gap: 2%;
   }
 `;
 
@@ -39,5 +39,18 @@ export const ProductsSummary = styled.summary`
     list-style-type: none;
     margin-left: 7vw;
     margin-bottom: 10px;
+  }
+`;
+
+export const ProductsListError = styled.p`
+  @media ${devices.mobileSS} {
+    font-family: Inter;
+    font-size: 5vw;
+    text-align: center;
+  }
+  @media ${devices.tablet} {
+    font-family: Inter;
+    font-size: 2vw;
+    text-align: center;
   }
 `;
