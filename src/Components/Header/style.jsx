@@ -7,13 +7,19 @@ export const HeaderMain = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     background-color: #f5f5f5;
   }
+  @media ${devices.mobileL} {
+    height: 18vh;
+  }
   @media ${devices.tablet} {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 5vw;
     width: 90vw;
     display: flex;
@@ -31,6 +37,7 @@ export const HeaderLogo = styled.img`
   }
   @media ${devices.tablet} {
     width: 12vw;
+    margin-left: 0;
   }
 `;
 export const HeaderForm = styled.form`

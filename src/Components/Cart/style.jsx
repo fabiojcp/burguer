@@ -22,6 +22,7 @@ export const CartMain = styled.div`
   @media ${devices.tablet} {
     position: fixed;
     top: 7vw;
+    left: auto;
     right: 6.5vw;
     width: 20vw;
     height: 35vw;

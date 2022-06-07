@@ -5,12 +5,17 @@ export const ProductsListMain = styled.div`
   @media ${devices.mobileSS} {
     display: flex;
     flex-direction: column;
-    margin: 110px 2vw 0px 2vw;
+    margin: 17vh 2vw 0px 2vw;
     gap: 20px;
     font-size: 6vw;
   }
+  @media ${devices.mobileL} {
+    margin-top: 20vh;
+  }
   @media ${devices.tablet} {
+    display: flex;
     padding: 2vw 25vw 0 5vw;
+    margin: 6vw 2vw 0px 2vw;
     width: 68vw;
   }
 `;
