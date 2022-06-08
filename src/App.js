@@ -23,7 +23,7 @@ export default function App() {
     filteredProducts.filter((product) => product.category === "Sanduíches");
   const Drink = () =>
     filteredProducts.filter((product) => product.category === "Bebidas");
-
+    const oi = "oi"
   function replaceSpecialChars(str) {
     str = str.replace(/[ÀÁÂÃÄÅ]/g, "A");
     str = str.replace(/[àáâãäå]/g, "a");
